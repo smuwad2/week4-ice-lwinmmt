@@ -2,21 +2,21 @@
 <html>
 <head>
     <style>
-
         #div1 {
             width: 200px;
             height: 200px;
             background-color: goldenrod;
         }
 
-        /* add CSS code here */
-        
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background-color: goldenrod;
+            border-radius: 50%;
+        }
     </style>
-
-    
 </head>
 <body>
-    
     <h2>Changing HTML Attribute Value</h2>
 
     <div id="div1"></div>
@@ -24,10 +24,19 @@
     <button onclick="changeShape()">Make a change!</button>
 
     <script>
-        var square=true;
-       // add code here
-        
-    </script>
+        function changeShape() {
+            let el = document.getElementById("div1");
+            
+            if (!el) {
+                el = document.getElementById("div2");
+            }
 
+            if (el.id === "div1") {
+                el.id = "div2";
+            } else {
+                el.id = "div1";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -11,19 +11,48 @@
 
    <input type="text" id="inputText">
    <!-- add a button here for adding new item -->
+   <button onclick="addItem()">Enter</button>
 
-   <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+   <ul id="shoppingList">
+      <li>Notebook<!--<button>Delete</button></li>--><button onclick="deleteItem(this)">Delete</button></li>
+      <li>Jello<button onclick="deleteItem(this)">Delete</button></li>
+      <li>Spinach<button onclick="deleteItem(this)">Delete</button></li>
+      <li>Rice<button onclick="deleteItem(this)">Delete</button></li>
+      <li>Birthday Cake<button onclick="deleteItem(this)">Delete</button></li>
+      <li>Candles<button onclick="deleteItem(this)">Delete</button></li>
    </ul>
 
    <script>
 
       // add code here
+      function addItem() {
+         const input = document.getElementById('inputText');
+         const itemText = input.value.trim();
+         
+         if (itemText === '') {
+            return;
+         }
+         
+         const list = document.getElementById('shoppingList');
+         const newItem = document.createElement('li');
+         newItem.innerText = itemText;
+         
+         const deleteButton = document.createElement('button');
+         deleteButton.innerText = 'Delete';
+         deleteButton.onclick = function() {
+            deleteItem(this);
+         };
+         
+         newItem.appendChild(deleteButton);
+         list.appendChild(newItem);
+         
+         input.value = '';
+      }
+      
+      function deleteItem(button) {
+         const listItem = button.parentElement;
+         listItem.remove();
+      }
 
    </script>
 
